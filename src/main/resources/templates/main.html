@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>회원의 목록입니다.</h2>
+    <div class="panel panel-default">
+        <div class="panel-heading">회원목록</div>
+        <div class="panel-body">
+            <table class="table table-bordered table-hover">
+                <tr class="warning">
+                    <td>번호</td>
+                    <td>이름</td>
+                    <td>나이</td>
+                    <td>성별</td>
+                    <td>수정</td>
+                    <td>삭제</td>
+                </tr>
+                <!-- model안에 들어가 있는 회원의 정보 전체 출력 -->
+
+                    <tr th:each="vo:${list}">
+                        <td th:text="${vo.id}"></td>
+                        <td th:text="${vo.name}"></td>
+                        <td th:text="${vo.age}"></td>
+                        <td th:text="${vo.gender}"></td>
+                        <td>
+                            <a th:href="@{/update(num=${vo.id})}">
+                                <button class="btn btn-primary">수정</button>
+                            </a>
+                        </td>
+                        <td>
+                            <a th:href="@{/delete(num=${vo.id})}">
+                                <button class="btn btn-warning">삭제</button>
+                            </a>
+                        </td>
+                    </tr>
+
+            </table>
+            <a href="insert">회원등록</a>
+        </div>
+        <div class="panel-footer">언어지능-박병관</div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
